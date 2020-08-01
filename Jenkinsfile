@@ -1,26 +1,5 @@
-pipeline {
-    agent any
+@Library('github.com/sanmechie/JenkinsSharedPipeline.git')_
 
-    stages {
-        stage('Verify Git Branch') {
-            steps {
-                echo  env.GIT_BRANCH
-            }
-        }
-
-        stage('Docker build') {
-            steps {
-                pwsh(script: 'docker images -a')
-                pwsh(script: """
-                cd azure-vote/
-                docker images -a
-                docker build -t jenkins-pipeline .
-                docker images -a
-                cd ..
-                """)
-            }
-        }
-    
-       
-    }
+echo_pipeline {
+    message = 'This is the final video'
 }
