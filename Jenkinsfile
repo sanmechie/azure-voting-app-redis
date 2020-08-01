@@ -1,4 +1,4 @@
-@Library('github.com/sanmechie/JenkinsSharedPipeline')
+//@Library('github.com/sanmechie/JenkinsSharedPipeline')
 
 pipeline {
     agent any
