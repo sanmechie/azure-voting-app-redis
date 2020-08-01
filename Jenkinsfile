@@ -1,26 +1,27 @@
-pipeline {
-    agent any
+@Library('https://github.com/sanmechie/JenkinsSharedPipeline')
 
-    stages {
-        stage('Verify Git Branch') {
-            steps {
-                echo  env.GIT_BRANCH
+pipeline{
+    agent: any
+    stages{
+        stage ('Call library from another repo'){
+            steps{
+                    script {
+                        helloworld()
+                    }
+
+            }
+            post {
+                success{
+                    echo "success"
+                }
+                failure{
+                    echo "failure"
+                }
             }
         }
-
-        stage('Docker build') {
-            steps {
-                pwsh(script: 'docker images -a')
-                pwsh(script: """
-                cd azure-vote/
-                docker images -a
-                docker build -t jenkins-pipeline .
-                docker images -a
-                cd ..
-                """)
-            }
-        }
-    
-       
     }
+
+
+
+
 }
