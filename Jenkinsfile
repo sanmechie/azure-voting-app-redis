@@ -6,7 +6,7 @@ pipeline {
         stage ('Call library from another repo'){
             steps{
                     script {
-                        helloworld()
+                        helloworld.helloworld()
                     }
 
             }
