@@ -1,8 +1,8 @@
 @Library('github.com/sanmechie/JenkinsSharedPipeline')
 
-pipeline{
+pipeline {
     agent any
-    stages{
+    stages {
         stage ('Call library from another repo'){
             steps{
                     script {
